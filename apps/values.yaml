@@ -4,3 +4,4 @@ spec:
   source:
     repoURL: https://github.com/eugenechyrski/argo-app
     targetRevision: HEAD
+
