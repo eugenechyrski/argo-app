@@ -11,6 +11,6 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: helm-charts/charts/prometheus
-    repoURL: https://github.com/prometheus-community/
-    targetRevision: HEAD
+    path: charts/prometheus
+    repoURL: https://github.com/prometheus-community/helm-charts
+    targetRevision: main
