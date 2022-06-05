@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-prometheus
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: helm-prometheus
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: helm-charts/tree/main/charts/prometheus
+    repoURL: https://github.com/prometheus-community/
+    targetRevision: HEAD
