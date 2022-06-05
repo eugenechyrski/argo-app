@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: helm-prometheus
-  namespace: helm-prometheus
+  namespace: default
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: helm-prometheus
+    namespace: default
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
