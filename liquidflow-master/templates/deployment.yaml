@@ -28,6 +28,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name:  EXECUTABLE
+              value: "/app/flow"
+            - name:  EXECUTABLE_ARG
+              value: "/config/master.yaml"
+
           volumeMounts:
             - name: config
               mountPath: /config
