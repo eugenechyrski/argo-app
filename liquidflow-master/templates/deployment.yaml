@@ -21,6 +21,8 @@ spec:
         app: {{ template "service.name" . }}
         release: {{ .Release.Name }}
     spec:
+      hostname: {{ .Chart.Name }}
+      subdomain: liquidflow-subdomain
       volumes:
         - name: config
           configMap:
