@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: {{ template "service.fullname" . }}
   labels:
-    name: liquidflow
     app: {{ template "service.name" . }}
     chart: {{ template "service.chart" . }}
     release: {{ .Release.Name }}
@@ -18,6 +17,7 @@ spec:
   template:
     metadata:
       labels:
+        name: liquidflow
         app: {{ template "service.name" . }}
         release: {{ .Release.Name }}
     spec:
