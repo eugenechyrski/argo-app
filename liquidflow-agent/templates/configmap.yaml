@@ -30,7 +30,7 @@ data:
         - "-Djava.class.path=/app/java-bridge.jar"
       path: /usr/lib/jvm/zulu8-ca/jre/lib/amd64/server/libjvm.so
     LogDir: ""
-    address: "/ip4/0.0.0.0/tcp/7778/udp/2222"
+    address: "/ip4/0.0.0.0/tcp/7778"
     fs:
       Dir: /cluster-storage/
       Key: STATS
