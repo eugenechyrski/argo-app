@@ -19,12 +19,21 @@ spec:
     release: {{ .Release.Name }}
 
 ---
-apiVersion: v1
-kind: Endpoints
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
 metadata:
-  name: {{ template "service.fullname" . }}
-subsets:
+  name: {{ template "service.fullname" . }}-es
+  labels:
+    kubernetes.io/service-name: {{ template "service.fullname" . }}
+addressType: IPv4
+ports:
+  - name: http
+    port: 9779
+    protocol: TCP
+endpoints:
   - addresses:
-      - ip: 192.0.2.42
-    ports:
-      - port: {{ .Values.service.port }}
+      - "10.1.2.4"
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
