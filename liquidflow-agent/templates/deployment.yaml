@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ template "service.fullname" . }}
   labels:
+    name: liquidflow
     app: {{ template "service.name" . }}
     chart: {{ template "service.chart" . }}
     release: {{ .Release.Name }}
