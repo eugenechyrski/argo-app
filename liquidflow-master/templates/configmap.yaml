@@ -9,4 +9,26 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
   master.yml: |
-    {{- (tpl (.Files.Get "files/master.template") .) | nindent 4 }}
+    bootstrap:
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+      - /ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+      - /ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+    private_key: CAASqAkwggSkAgEAAoIBAQDgPKbR+6udgvk/VJ+JBIDfFEsGActQqd2NsNmBKbJ64OFNRXF/F0AFJoSBPVKbQNJmYa9sG1E73shG2CGGuzXG0j9MYdE/mQQV3zriuZujdtzXvyAebJ1PrIAhGeGULOIYp7bpg7CSwnbN+TMKC1yWv4nXtk1gtHLpUvgYsn62bc5YQz+aUpQUZoFXtui6CW7vQb2soG1wYihC4sHbjtZ5hik0qFBjDUMRkECgZgAUGwmOLQ8AmnYK+kRSB1bm3YN9XDLbtQ4JVWvXNdYYO+/6RLu8wV9dTbC7RnBTqh8weDQtAy3vGbMQMws7NkFupg43IeUkD/L4RH0wvutWtyTlAgMBAAECggEBAL2ZyxxGBof6lLG95d8/FZCKYh1EKxubZaBG5sJV9Xn858QkcaEakaFJPkThCxYHK2AyPNfWCUvsRb/RRBfd98yTPb5h/0IdKd0skWfftP/0oysxigDvqdwSaYyTi690fACI3xp3pTeSgk4K5eMaVEGK1wy0Mp0QNxGee/S2CHpKrMtrUIVbE1rRwOtdYwTjuNJTEgDGMYf0iAxiuv0k9ziSJOZU8w0Tm4GvuCIrD5RE5tycOVjbZTZ61gtKMKNCe6rwVmF27ZNP7IK8VUrRLtAZnq8iyWu5NASPPV7uxdvo2/pieELPU6/D2IxQunbjgtETGE36bCTFd+jE83zDjskCgYEA5H/XQDqQd74Yb9aihwmAuebr+ekiRBGuE5LySWgKB0ZfvzWWVzE0VXTl8H87AH0BvEyJ0uplGkLj5dGveYOwQC8R0pSSapBHcTdJezPH8G+yFKBI5bRS/bsHWS7prWVC9MsIV2qnnTGvde+FrB/QdwRADqPOYjrBxWpBtVVqboMCgYEA+zl7lb6YQvMdBFBw9cU8hOwLRiS/UUP928kyV5PZILQ1/o6IhQQ/R/f+FFwHDsh7Yi+rw1SGlUCLBnKq6P6sUiDzuxXDK7ovu1vHGeCuYnQzscLLRwZoGxhBE8U0eJTpwtP07lABABiFogbp+cVxRN8pwIr62GpF+7QPvVtAQncCgYBqp3lTU4KnQaWqXibSnQ7mtvCiX71MxGvaWxaYSOWVa7W5TEv2OtNQqBXD4b8qhS7QM3GJbzrtvRce6HbdYyhbbR0Gi66j6uBN6h50UUEb6ybWFdKw1TB/mlLdv9X2x3MvS62DEBdYeh6KD9j29IqbYvJ7Yt4sX3yepvAwscPR/QKBgAvq9S7sZMLAT78VpdYy7iUMIZjJQ34ycIeNquK2s9U2V11lG5rb0bizTg1fNEKCRkApLMfOabgI4M+EfxEgi8I1p/pXFPQtF/iWaQKUQxGOm6kyKXyMFEI8y1GJyGxz/AbvES6BAxsjDqvaEh10PWRcBdoJfc7oc7t2Fk0QWCMPAoGBAJJjnFZrBBomISor1jQ2iB4j6YhnBfapFWTNTQzhQJLDCWuC+sMCK9zblhx4N0fkUE69KuG+b9f60oGyqQsIlBtvLldJDHAxSubblc4iSZNcSp7hxbYM0hIAyRekbmsexTLkWJLe41epzgT4UKDIf/LOTSskkhtaXXoxf6ASFsTP
+    public_key: CAASpgIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDgPKbR+6udgvk/VJ+JBIDfFEsGActQqd2NsNmBKbJ64OFNRXF/F0AFJoSBPVKbQNJmYa9sG1E73shG2CGGuzXG0j9MYdE/mQQV3zriuZujdtzXvyAebJ1PrIAhGeGULOIYp7bpg7CSwnbN+TMKC1yWv4nXtk1gtHLpUvgYsn62bc5YQz+aUpQUZoFXtui6CW7vQb2soG1wYihC4sHbjtZ5hik0qFBjDUMRkECgZgAUGwmOLQ8AmnYK+kRSB1bm3YN9XDLbtQ4JVWvXNdYYO+/6RLu8wV9dTbC7RnBTqh8weDQtAy3vGbMQMws7NkFupg43IeUkD/L4RH0wvutWtyTlAgMBAAE=
+    jvm:
+      enable: true
+      args:
+        - "-verbose:all"
+        - "-Dfile.encoding=UTF-8"
+        - "-Xmx1100m"
+        - "-Xms1100m"
+        - "-Xdebug"
+        - "-Djava.class.path=/app/java-bridge.jar"
+      path: /usr/lib/jvm/zulu8-ca/jre/lib/amd64/server/libjvm.so
+    fs:
+      Dir: /cluster-storage/
+      Key: STATS
+    LogDir: /jobstats-master/
