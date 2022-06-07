@@ -43,13 +43,13 @@ spec:
               containerPort: 9779
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /components
-              port: http
+            exec:
+              command:
+                - "echo 1"
           readinessProbe:
-            httpGet:
-              path: /components
-              port: http
+            exec:
+              command:
+                - "echo 1"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
