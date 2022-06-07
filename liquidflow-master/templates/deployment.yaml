@@ -32,7 +32,7 @@ spec:
             - name:  EXECUTABLE
               value: "/app/flow"
             - name:  EXECUTABLE_ARG
-              value: "/config/master.yaml"
+              value: "/config/master.yml"
 
           volumeMounts:
             - name: config
