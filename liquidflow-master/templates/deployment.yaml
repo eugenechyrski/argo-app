@@ -20,10 +20,17 @@ spec:
         app: {{ template "service.name" . }}
         release: {{ .Release.Name }}
     spec:
+      volumes:
+        - name: config
+          configMap:
+            name:   {{ template "service.fullname" . }}-configmap
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: config
+              mountPath: /config
           ports:
             - name: http
               containerPort: 9779
