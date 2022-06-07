@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "service.fullname" . }}-configmap
+  labels:
+    app: {{ template "service.name" . }}
+    chart: {{ template "service.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  agent.yml: |
+    bootstrap:
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+      - /ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+      - /dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+      - /ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+    private_key: CAASqQkwggSlAgEAAoIBAQDRD56KPwmsx3bxkLwia1ZzhbAHEJdsWL+7eaHio8oKqYS25uvL6Xki1Mwc7IkLBaMK6ebAFJC3mU+xidtTPKHtitlLesS7Kw6DWa0yVSE5ab5uQzSGgiZd93i4+ENYJoUPjXsIrsrqNkSIT9ruOVnK3RE9qn8hCHH38xfa3NQE6tdCtOkLtzSwZnd6ohWto3W4N1f1zcYUcWCl69pS1w9qRtHJH3mgrO1Zfch1pmTnEHCeP2ZDC/aPJqhMGIDSYjkxsBuAiYKz/C4ABKcksitJTxlVn4DoDjD8VGW4kmCOh41c3pes3vWknmOj6ecoB+EBQbY/65y8CplxPGOfS1ElAgMBAAECggEAMyayMLsZv+eR56r1DSrcHSnRlvjtQ7o3N0ScYlqW3aL6cNHxUZQPaoFMa6tIIKVBbjMqnUaq3fEp+ZN0UVpdeERnxDsGlZEEXQj9AnqnxWdlC49v85U2k/kv1XoQ6CmMlvCT8NzrkwCyJfP76huoJ6WNSVxE/K0XTYZyCL/NNGJbiJWfcB6RaY/E7DQ3Pjocu8OuDvG2n9ztUcWiUvGSMta8MvGtzHwB6l1+/7qK79ydK0p7CsiuhqfUyx5K/vYDjp27hY/hdJB3uAhpiGGvdDMu+DIkRDFOTDYOFLhZrYZqC0r+Dh03ZMU93NzZxFcC3/kIF7PAaHsFXc15awIaJQKBgQDR5+zijb0gDIbw+IkDaBSZuyavHE8gncMqV/8fqS6V/MXaVs1IfjdrOqj7BunpS79Ygi6yQnDFTFCaEtprNy0yKa3q2bq64hWKRQij/oiEIpCPuXB0fICTwISSJpk16C9zQjgKQx/jRkc5SMdXEka3aqKfSjraV0U20Y2nGLE7CwKBgQD++DHLK4RkwDVQYxNZRv0+FHaZcwS+cJKzjiMSnv6/UPmpdlihRUxDnHhHbyByDZoaG1YhQ1xRJ2cG+ex0APPRXNONyYJnQYvDB6mfnDBkkBZwRHhJ9c02EzT+EqUap56wwVdkWWTQJUVrC3lOl9uEciSKbGSvGqeARhK44MfCjwKBgQCvZfiY+018+VrNAzEiapdEOpHBo4svOwT5XhyubSWjaVw+7WeOWwGeFZ9cW9OcAZK7t9SjWkd3ZiS4Cmb/TlTy5McSRqv1O7Q6HSNyPd//Yg6gOpmQjPS4AhgFNEG0PPdhfYTsdliwBmq/oGQKCxiSbYXESzfQeTo563NNnKGELwKBgQCiCrUCrZaHvYxkmYLrg21g7fpuDaZfLgZeLSBnLjsy9dCl/bvYSsVsVt4ucBbLxY9Btkvn+fqK7SLSUTYQh6ZtUbR18TJ6UzLy8UTBVq9+ygAou6tDPf98tXpBWzIpHYyCQ246LYIfswBKRtGCvIpbw3srqjXW/3ai1GYDr3/lSwKBgQCrcdsFsu3/LhlVAYuGiy+j3vnZLuZTRi2b2Wlg/kFD3HKSNITUnkFnUowvKFc65dzGKbDol8ieXfgDUU3/8maGlHNbSYXHR6u0GsNZ+8aCGkdXr9fpCLVb8Cel5lCML+goGa3gX0kiHA3wTEMMMrgeAGbiiYOUgUIzrvyuiBuuEg==
+    public_key: CAASpgIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDRD56KPwmsx3bxkLwia1ZzhbAHEJdsWL+7eaHio8oKqYS25uvL6Xki1Mwc7IkLBaMK6ebAFJC3mU+xidtTPKHtitlLesS7Kw6DWa0yVSE5ab5uQzSGgiZd93i4+ENYJoUPjXsIrsrqNkSIT9ruOVnK3RE9qn8hCHH38xfa3NQE6tdCtOkLtzSwZnd6ohWto3W4N1f1zcYUcWCl69pS1w9qRtHJH3mgrO1Zfch1pmTnEHCeP2ZDC/aPJqhMGIDSYjkxsBuAiYKz/C4ABKcksitJTxlVn4DoDjD8VGW4kmCOh41c3pes3vWknmOj6ecoB+EBQbY/65y8CplxPGOfS1ElAgMBAAE=
+    jvm:
+      enable: true
+      args:
+        - "-verbose:all"
+        - "-Dfile.encoding=UTF-8"
+        - "-Xmx11m"
+        - "-Xms11m"
+        - "-Xdebug"
+        - "-Xrunjdwp:server=y,transport=dt_socket,address=5007,suspend=n"
+        - "-Djava.class.path=/app/java-bridge.jar"
+      path: /usr/lib/jvm/zulu8-ca/jre/lib/amd64/server/libjvm.so
+    LogDir: ""
+    fs:
+      Dir: /cluster-storage/
+      Key: STATS
