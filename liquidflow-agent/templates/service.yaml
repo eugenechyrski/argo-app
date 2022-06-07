@@ -25,6 +25,10 @@ metadata:
   name: {{ template "service.fullname" . }}-es
   labels:
     kubernetes.io/service-name: {{ template "service.fullname" . }}
+    app: {{ template "service.name" . }}
+    chart: {{ template "service.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 addressType: IPv4
 ports:
   - name: http
