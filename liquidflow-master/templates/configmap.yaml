@@ -8,5 +8,5 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  application.properties: |
-    {{- (tpl (.Files.Get "files/master.yaml") .) | nindent 4 }}
+  master.yml: |
+    {{- (tpl (.Files.Get "files/master.template") .) | nindent 4 }}
