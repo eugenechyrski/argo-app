@@ -17,3 +17,13 @@ spec:
   selector:
     app: {{ template "service.name" . }}
     release: {{ .Release.Name }}
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: {{ template "service.fullname" . }}
+subsets:
+  - addresses:
+      - ip: 192.0.2.43
+    ports:
+      - port: {{ .Values.service.port }}
