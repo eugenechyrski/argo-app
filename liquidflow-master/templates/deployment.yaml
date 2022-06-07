@@ -28,6 +28,7 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          workingDir: /app
           env:
             - name:  EXECUTABLE
               value: "/app/flow"
