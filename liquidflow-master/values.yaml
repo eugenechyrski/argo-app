@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: liquidflow
+  repository: k3d-test-app-registry:5050/liquidflow
   tag: v1.0
   pullPolicy: IfNotPresent
 
