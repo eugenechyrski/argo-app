@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ template "service.fullname" . }}
   labels:
@@ -8,8 +8,8 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: 3
+  replicas: 2
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: {{ template "service.name" . }}
