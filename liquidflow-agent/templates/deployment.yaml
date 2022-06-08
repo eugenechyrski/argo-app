@@ -38,7 +38,10 @@ spec:
               value: "/app/agent_server"
             - name:  EXECUTABLE_ARG
               value: "/config/agent.yml"
-
+          - name: K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
           volumeMounts:
             - name: config
               mountPath: /config

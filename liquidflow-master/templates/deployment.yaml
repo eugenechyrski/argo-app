@@ -37,7 +37,10 @@ spec:
               value: "/app/flow"
             - name:  EXECUTABLE_ARG
               value: "/config/master.yml"
-
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           volumeMounts:
             - name: config
               mountPath: /config
