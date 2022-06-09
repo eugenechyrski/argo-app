@@ -14,6 +14,10 @@ spec:
       targetPort: 9779
       protocol: TCP
       name: http
+    - port: 7878
+      targetPort: 7878
+      protocol: TCP
+      name: http
   selector:
     app: {{ template "service.name" . }}
     release: {{ .Release.Name }}
