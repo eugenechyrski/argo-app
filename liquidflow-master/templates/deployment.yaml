@@ -25,12 +25,12 @@ spec:
       hostname: {{ .Chart.Name }}
       subdomain: liquidflow-subdomain
       volumes:
-        - name: config
-          configMap:
-            name:   {{ template "service.fullname" . }}-configmap
-        - name: flow
-          configMap:
-            name: { { template "service.fullname" . } }-configmap-backup
+        - configMap:
+            name: config
+          name: {{ template "service.fullname" . }}-configmap
+        - configMap:
+            name: flow
+          name: {{ template "service.fullname" . }}-configmap-backup
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
