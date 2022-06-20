@@ -1,0 +1,18 @@
+{{if  .Values.servers.minio }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-minio
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: helm/minio
+    repoURL: https://github.com/minio/minio
+    targetRevision: main
+{{end}}
