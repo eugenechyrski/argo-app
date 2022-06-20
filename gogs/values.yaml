@@ -167,7 +167,7 @@ persistence:
 # dbType - database type
 dbType: "sqllite"
 # useInPodPostgres -- use the chart built in db
-useInPodPostgres: true
+useInPodPostgres: false
 inPodPostgres:
   # inPodPostgres.secret -- secret with generated credentials
   secret: postgresecrets
