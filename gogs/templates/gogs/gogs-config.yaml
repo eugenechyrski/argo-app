@@ -76,6 +76,8 @@ data:
 
     [lfs]
     OBJECTS_PATH = /data/lfs-objects
+    [security]
+    INSTALL_LOCK = true
 
 
     {{- if .Values.extra_config }}
