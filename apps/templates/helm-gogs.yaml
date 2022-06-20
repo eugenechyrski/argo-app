@@ -13,7 +13,15 @@ spec:
   source:
     path: .
     repoURL: https://gitea.com/gitea/helm-chart.git
-    targetRevision: master
-
+    targetRevision: main
+    helm:
+      values: |
+        dbType: sqllite
+        config:
+          secretKey: "secret key"
+          disableInstaller: true
+          offlineMode: false
+          requireSignin: false
+          disableRegistration: true
 
 
