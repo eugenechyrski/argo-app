@@ -20,7 +20,7 @@ data:
     public_key: CAASpgIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDgPKbR+6udgvk/VJ+JBIDfFEsGActQqd2NsNmBKbJ64OFNRXF/F0AFJoSBPVKbQNJmYa9sG1E73shG2CGGuzXG0j9MYdE/mQQV3zriuZujdtzXvyAebJ1PrIAhGeGULOIYp7bpg7CSwnbN+TMKC1yWv4nXtk1gtHLpUvgYsn62bc5YQz+aUpQUZoFXtui6CW7vQb2soG1wYihC4sHbjtZ5hik0qFBjDUMRkECgZgAUGwmOLQ8AmnYK+kRSB1bm3YN9XDLbtQ4JVWvXNdYYO+/6RLu8wV9dTbC7RnBTqh8weDQtAy3vGbMQMws7NkFupg43IeUkD/L4RH0wvutWtyTlAgMBAAE=
     address: "/ip4/0.0.0.0/tcp/7778"
     backupDir: "/backup/"
-    restoreBackup: true    
+    restoreBackup: false
     jvm:
       enable: true
       args:
