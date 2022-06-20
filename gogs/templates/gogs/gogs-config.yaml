@@ -8,7 +8,9 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  app.ini: |-
+  app.ini: |
+  {{- (tpl (.Files.Get "gogs.ini") .) | nindent 4 }}
+  app2.ini: |-
     [server]
     {{ if .Values.ingress.protocol }}
     {{- $proto := set . "proto" .Values.ingress.protocol  }}
