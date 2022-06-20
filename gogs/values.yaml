@@ -165,9 +165,9 @@ persistence:
 
 # valid types: postgres, mysql, mssql, sqllite
 # dbType - database type
-dbType: "postgres"
+dbType: "sqllite"
 # useInPodPostgres -- use the chart built in db
-useInPodPostgres: true
+useInPodPostgres: false
 inPodPostgres:
   # inPodPostgres.secret -- secret with generated credentials
   secret: postgresecrets
@@ -207,10 +207,10 @@ podAnnotations: {}
 # In order to disable initial install screen you must have secretKey and disableInstaller=true
 config:
   # config.secreyKey -- secret key name
-  #  secretKey: define_your_secret
+  secretKey: define_your_secret
   # config.disableInstaller -- disables the gogs installer
-  disableInstaller: false
-  offlineMode: false
+  disableInstaller: true
+  offlineMode: true
   requireSignin: false
   disableRegistration: false
   openidSignin: true
