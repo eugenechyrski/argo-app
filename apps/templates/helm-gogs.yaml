@@ -13,7 +13,7 @@ spec:
   source:
     path: .
     repoURL: https://gitea.com/gitea/helm-chart.git
-    targetRevision: main
+    targetRevision: master
     helm:
       values: |
         dbType: sqllite
