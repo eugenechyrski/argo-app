@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  app.ini: |-
+    [server]
+    {{ if .Values.ingress.protocol }}
+    {{- $proto := set . "proto" .Values.ingress.protocol  }}
+    {{- else -}}
+    {{- $proto := set . "proto" "http" }}
+    {{- end -}}
+    {{- if and .Values.service.http.externalHost ( .Values.service.http.externalPort ) }}
+    EXTERNAL_URL = {{ .proto }}://{{ .Values.service.http.externalHost }}:{{ .Values.service.http.externalPort  }}/
+    {{- else if .Values.service.http.externalHost }}
+    EXTERNAL_URL = {{ .proto }}://{{ .Values.service.http.externalHost }}/
+    {{- else }}
+    DOMAIN = localhost
+    EXTERNAL_URL = %(PROTOCOL)s://%(DOMAIN)s:%(HTTP_PORT)s/
+    {{- end -}}
+
+    {{- if .Values.service.http.externalHost }}
+    DOMAIN = {{ .Values.service.http.externalHost }}
+    {{- else }}
+    DOMAIN = {{ template "fullname" . }}-http.{{ .Release.Namespace }}.svc.cluster.local
+    {{- end -}}
+
+    HTTP_PORT = {{ .Values.service.http.port }}
+    UNIX_SOCKET_PERMISSION = 666
+    LOCAL_ROOT_URL = %(PROTOCOL)s://%(HTTP_ADDR)s:%(HTTP_PORT)s/
+
+    APP_DATA_PATH = /data
+
+    SSH_DOMAIN = %(DOMAIN)s
+    SSH_PORT = 22
+
+    {{- if .Values.service.ssh.externalHost  }}
+    SSH_DOMAIN = {{ .Values.service.ssh.externalHost  }}
+    SSH_LISTEN_HOST = {{ .Values.service.ssh.externalHost  }}
+    {{- else }}
+    SSH_DOMAIN = {{ template "fullname" . }}-ssh.{{ .Release.Namespace }}.svc.cluster.local
+    SSH_LISTEN_HOST = {{ template "fullname" . }}-ssh.{{ .Release.Namespace }}.svc.cluster.local
+    {{- end }}
+    {{- if .Values.service.ssh.externalPort  }}
+    SSH_PORT = {{ .Values.service.ssh.externalPort  }}
+    {{- else }}
+    SSH_PORT = {{ .Values.service.ssh.port  }}
+    {{- end }}
+
+    {{ if .Values.externalDB }}
+    [database]
+    DB_TYPE = {{ .Values.dbType }}
+    HOST = {{ .Values.externalDB.dbHost }}:{{ .Values.externalDB.dbPort }}
+    NAME = {{ .Values.externalDB.dbDatabase }}
+    USER = {{ .Values.externalDB.dbUser }}
+    PASSWD = {{ .Values.externalDB.dbPassword }}
+    {{ else if .Values.useInPodPostgres }}
+    DB_TYPE = postgres
+    HOST = 127.0.0.1:5432
+    NAME = {{ .Values.inPodPostgres.postgresDatabase }}
+    USER = postgres
+    PASSWD = POSTGRES_PASSWORD
+    {{ end }}
+
+    [cache]
+    ENABLED = true
+    ADAPTER = memcache
+    INTERVAL = 60
+    HOST = 127.0.0.1:11211
+    ITEM_TTL = 16h
+
+    [lfs]
+    OBJECTS_PATH = /data/lfs-objects
+
+
+    {{- if .Values.extra_config }}
+
+    {{ .Values.extra_config | indent 4 }}
+    {{ end }}
