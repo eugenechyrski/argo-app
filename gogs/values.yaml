@@ -153,6 +153,11 @@ persistence:
 #
 externalDB:
   dbPassword: "test"
+  dbUser: "test"
+  dbHost: "localhost"
+  dbPort:  "5432"
+  dbDatabase: "gogs"
+
     # externalDB.dbUser -- external db user
 #   dbUser: "postgres"
     # externalDB.dbPassword -- external db passsword
@@ -166,7 +171,7 @@ externalDB:
 
 # valid types: postgres, mysql, mssql, sqllite
 # dbType - database type
-dbType: "sqllite"
+dbType: "sqlite3"
 # useInPodPostgres -- use the chart built in db
 useInPodPostgres: false
 inPodPostgres:
