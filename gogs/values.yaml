@@ -151,7 +151,8 @@ persistence:
 
 # persistence.externalDB -- Connect to an external database
 #
-# externalDB:
+externalDB:
+  dbPassword: "test"
     # externalDB.dbUser -- external db user
 #   dbUser: "postgres"
     # externalDB.dbPassword -- external db passsword
