@@ -14,3 +14,13 @@ spec:
     path: .
     repoURL: https://github.com/keyporttech/gogs-helm-chart
     targetRevision: main
+    helm:
+      values: |
+        config:
+          secretKey: "secret key"
+          disableInstaller: true
+          offlineMode: false
+          requireSignin: false
+          disableRegistration: true
+
+

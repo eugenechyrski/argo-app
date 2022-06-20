@@ -1,6 +1,6 @@
 servers:
   prometheus: false
-  minio: true
+  minio: false
 spec:
   destination:
     server: https://kubernetes.default.svc
