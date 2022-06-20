@@ -38,7 +38,7 @@ spec:
           workingDir: /app
           env:
             - name:  EXECUTABLE
-              value: "/app/flow"
+              value: {{ .Values.service.executable }}
             - name:  EXECUTABLE_ARG
               value: "/config/master.yml"
             - name: K8S_POD_NAME
