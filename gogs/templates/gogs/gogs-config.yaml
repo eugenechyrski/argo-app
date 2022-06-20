@@ -8,9 +8,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  app.ini: |
-  {{- (tpl (.Files.Get "gogs.ini") .) | nindent 4 }}
-  app2.ini: |-
+  app.ini: |-
     [server]
     {{ if .Values.ingress.protocol }}
     {{- $proto := set . "proto" .Values.ingress.protocol  }}
@@ -53,16 +51,16 @@ data:
     {{- else }}
     SSH_PORT = {{ .Values.service.ssh.port  }}
     {{- end }}
-
-    {{ if .Values.externalDB }}
     [database]
-    DB_TYPE = {{ .Values.dbType }}
+    {{ if .Values.externalDB }}
+    TYPE = {{ .Values.dbType }}
     HOST = {{ .Values.externalDB.dbHost }}:{{ .Values.externalDB.dbPort }}
     NAME = {{ .Values.externalDB.dbDatabase }}
     USER = {{ .Values.externalDB.dbUser }}
     PASSWD = {{ .Values.externalDB.dbPassword }}
+    PATH     = data/gogs.db
     {{ else if .Values.useInPodPostgres }}
-    DB_TYPE = postgres
+    TYPE = postgres
     HOST = 127.0.0.1:5432
     NAME = {{ .Values.inPodPostgres.postgresDatabase }}
     USER = postgres
