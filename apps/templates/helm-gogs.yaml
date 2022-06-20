@@ -12,16 +12,5 @@ spec:
   project: default
   source:
     path: .
-    repoURL: https://gitea.com/gitea/helm-chart.git
-    targetRevision: master
-    helm:
-      values: |
-        dbType: sqllite
-        config:
-          secretKey: "secret key"
-          disableInstaller: true
-          offlineMode: false
-          requireSignin: false
-          disableRegistration: true
-
-
+    repoURL: https://github.com/keyporttech/gogs-helm-chart
+    targetRevision: main
