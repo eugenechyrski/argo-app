@@ -10,14 +10,10 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: 9779
-      targetPort: 9779
+    - port: 5432
+      targetPort: 5432
       protocol: TCP
-      name: http
-    - port: 7878
-      targetPort: 7878
-      protocol: TCP
-      name: ws
+      name: tcp
   selector:
     app: {{ template "service.name" . }}
     release: {{ .Release.Name }}
