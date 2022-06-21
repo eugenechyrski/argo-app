@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "service.fullname" . }}
+  labels:
+    app: {{ template "service.name" . }}
+    chart: {{ template "service.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  serviceName: {{ template "service.name" . }}
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: {{ template "service.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: postgres
+        app: {{ template "service.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      hostname: {{ .Chart.Name }}
+      subdomain: postgres-subdomain
+      volumes:
+        - name: config
+          configMap:
+            name:   {{ template "service.fullname" . }}-configmap
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          workingDir: /app
+          env:
+            - name:  POSTGRES_PASSWORD
+              value: {{ .Values.service.password }}
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          ports:
+            - name: tcp
+              containerPort: 5432
+              protocol: TCP
+
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
