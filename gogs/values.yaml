@@ -155,9 +155,9 @@ externalDB:
     # externalDB.dbUser -- external db user
    dbUser: "postgres"
     # externalDB.dbPassword -- external db passsword
-   dbPassword: "<MY_PASSWORD>"
+   dbPassword: "test123"
     # externalDB.dbHost -- external db host
-   dbHost: "service-name.namespace.svc.cluster.local" # or some external host
+   dbHost: "helm-postgres-postgres-db.svc.cluster.local" # or some external host
     # externalDB.dbPort - external DB port
    dbPort: "5432"
     # externalDB.dbDatabase -- external db database with gogs data
