@@ -4,7 +4,7 @@
 
 images:
   # image.gogs -- Gogs image
-  gogs: gogs/gogs:0.12.9
+  gogs: gogs/gogs:0.12.3
   # image.postgres -- Postgres image
   postgres: "postgres:11"
   # image.memcached--Memcached image
@@ -151,13 +151,7 @@ persistence:
 
 # persistence.externalDB -- Connect to an external database
 #
-externalDB:
-  dbPassword: "test"
-  dbUser: "test"
-  dbHost: "localhost"
-  dbPort:  "5432"
-  dbDatabase: "gogs"
-
+# externalDB:
     # externalDB.dbUser -- external db user
 #   dbUser: "postgres"
     # externalDB.dbPassword -- external db passsword
@@ -171,9 +165,9 @@ externalDB:
 
 # valid types: postgres, mysql, mssql, sqllite
 # dbType - database type
-dbType: "sqlite3"
+dbType: "postgres"
 # useInPodPostgres -- use the chart built in db
-useInPodPostgres: false
+useInPodPostgres: true
 inPodPostgres:
   # inPodPostgres.secret -- secret with generated credentials
   secret: postgresecrets
@@ -213,10 +207,10 @@ podAnnotations: {}
 # In order to disable initial install screen you must have secretKey and disableInstaller=true
 config:
   # config.secreyKey -- secret key name
-  secretKey: define_your_secret
+  #  secretKey: define_your_secret
   # config.disableInstaller -- disables the gogs installer
-  disableInstaller: true
-  offlineMode: true
+  disableInstaller: false
+  offlineMode: false
   requireSignin: false
   disableRegistration: false
   openidSignin: true
