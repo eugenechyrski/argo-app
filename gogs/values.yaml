@@ -151,23 +151,23 @@ persistence:
 
 # persistence.externalDB -- Connect to an external database
 #
-# externalDB:
+externalDB:
     # externalDB.dbUser -- external db user
-#   dbUser: "postgres"
+   dbUser: "postgres"
     # externalDB.dbPassword -- external db passsword
-#   dbPassword: "<MY_PASSWORD>"
+   dbPassword: "<MY_PASSWORD>"
     # externalDB.dbHost -- external db host
-#   dbHost: "service-name.namespace.svc.cluster.local" # or some external host
+   dbHost: "service-name.namespace.svc.cluster.local" # or some external host
     # externalDB.dbPort - external DB port
-#   dbPort: "5432"
+   dbPort: "5432"
     # externalDB.dbDatabase -- external db database with gogs data
-#   dbDatabase: "gogs"
+   dbDatabase: "gogs"
 
 # valid types: postgres, mysql, mssql, sqllite
 # dbType - database type
 dbType: "postgres"
 # useInPodPostgres -- use the chart built in db
-useInPodPostgres: true
+useInPodPostgres: false
 inPodPostgres:
   # inPodPostgres.secret -- secret with generated credentials
   secret: postgresecrets
